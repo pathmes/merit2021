@@ -71,3 +71,20 @@ ggplot(data = df10, mapping =
   theme(panel.background = element_rect(fill = "gray70"))
 
 
+# Add boundary lines between components of the bars
+ggplot(data = df10, mapping =
+aes(x = fct_reorder(University, mr), y = utenths_p,
+fill = Tenths)) +
+geom_bar(stat = "identity", color = "gray60") +
+scale_y_continuous(breaks = seq(0, 100, 10)) +
+labs(y = "Cumulative Percent of Students",
+x = "University",
+title = "Common Merit List Positions by University - 2021",
+caption = "Data from the UGC",
+fill = "Merit Order")  +
+scale_fill_continuous_divergingx(palette = "Geyser",
+mid = -5, rev = TRUE,
+breaks=c(-1.5,-5, -9.5),
+labels=c("Top","Middle","Bottom")) +
+theme(panel.background = element_rect(fill = "gray60"))
+
